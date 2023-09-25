@@ -1,0 +1,23 @@
+theme = "gruvbox_material_dark_medium"
+
+[editor]
+mouse = false
+line-number = "relative"
+
+[editor.soft-wrap]
+enable = true
+
+[editor.file-picker]
+hidden = false
+
+[editor.lsp]
+display-inlay-hints = true
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "block"
+
+[keys.normal]
+esc = ["collapse_selection", "keep_primary_selection"]
+
