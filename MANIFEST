@@ -10,3 +10,7 @@ tmux.conf|s|.tmux.conf
 config.fish|s|.config/fish/config.fish
 alacritty.toml|s|.alacritty.toml
 .xprofile|s|
+zshrc|s|.zshrc
+zprofile|s|.zprofile
+.config/starship.toml|s|
+.claude/CLAUDE.md|s|

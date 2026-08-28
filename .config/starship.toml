@@ -1,0 +1,8 @@
+[git_commit]
+disabled = false
+commit_hash_length = 7
+format = '[\($hash\)]($style) '
+style = "bold green"
+only_detached = false
+tag_disabled = false
+
