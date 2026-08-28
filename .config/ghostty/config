@@ -1,47 +1,6 @@
-config-file = ?~/.ghostty
+keybind = shift+enter=text:\x1b\r
 
-window-theme = "system"
-shell-integration = fish
-# no-cursor: cursor shape stays Ghostty's, not fish's
-shell-integration-features = no-cursor,ssh-terminfo,ssh-env
+theme = Gruvbox Dark
 
-# Font settings
-font-size = 13
-font-family = "JetbrainsMono Nerd Font"
-mouse-hide-while-typing = true
-
-# Cursor settings
-cursor-style = block
-cursor-style-blink = true
-
-# Colors: Terminal.app Basic profile, dark variant
-theme = "Terminal Basic Dark"
-
-# Titlebar settings
-macos-titlebar-style = native
-
-# Cell Height
-grapheme-width-method = "unicode"
-
-# Enable link on hover (MacOS: Cmd, Linux: Ctrl)
-# Note: Under Tmux, require Shift + Cmd to open link
-link-url = true
-
+# Send Option as Alt/Meta so tmux can receive Option+Arrow bindings.
 macos-option-as-alt = true
-# Keybindings
-
-# This doesn't help. Aerospace treats each ghostty tab as a separate window
-# lead to when press alt+h/l, aerospace just change to the next/previous tab
-# instead of select to the next window.
-#keybind = alt+h=unbind
-#keybind = alt+l=unbind
-
-# Scrolling settings
-keybind = page_up=scroll_page_up
-keybind = page_down=scroll_page_down
-keybind = shift+page_up=adjust_selection:page_up
-keybind = shift+page_down=adjust_selection:page_down
-
-copy-on-select = clipboard
-clipboard-read = allow
-clipboard-write = allow
