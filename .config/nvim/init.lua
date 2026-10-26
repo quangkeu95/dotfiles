@@ -275,6 +275,7 @@ vim.keymap.set("n", "n", "nzzzv", { desc = "Next search result (centered)" })
 vim.keymap.set("n", "N", "Nzzzv", { desc = "Previous search result (centered)" })
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Half page down (centered)" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Half page up (centered)" })
+vim.keymap.set("n", "gb", "<C-o>", { silent = true, desc = "Go back in jump list" })
 
 vim.keymap.set("x", "<leader>p", '"_dP', { desc = "Paste without yanking" })
 vim.keymap.set({ "n", "v" }, "<leader>x", '"_d', { desc = "Delete without yanking" })
@@ -303,6 +304,10 @@ vim.keymap.set("v", "<", "<gv", { desc = "Indent left and reselect" })
 vim.keymap.set("v", ">", ">gv", { desc = "Indent right and reselect" })
 
 vim.keymap.set("n", "J", "mzJ`z", { desc = "Join lines and keep cursor position" })
+
+-- Shift+/ toggles comments via built-in gc (replaces `?` backward search; use `/` then `N`)
+vim.keymap.set("n", "?", "gcc", { remap = true, desc = "Toggle comment line" })
+vim.keymap.set("x", "?", "gc", { remap = true, desc = "Toggle comment selection" })
 
 vim.keymap.set("n", "<leader>pa", function() -- show file path
 	local path = vim.fn.expand("%:p")
@@ -417,8 +422,35 @@ vim.api.nvim_create_autocmd("FileType", {
 -- ============================================================================
 -- PLUGINS (vim.pack)
 -- ============================================================================
+-- markdown-preview makes heading ids like "1.-intro" (keeps punctuation); GitHub-style TOC links
+-- use "#1-intro", so in-page links don't jump. Rewrite its bundled slugify to GitHub's rule.
+-- ponytail: string patch on a minified bundle; warns if an update changes the code it targets.
+local function mkdp_github_slugs(path)
+	local old = 'encodeURIComponent(String(e).trim().toLowerCase().replace(/\\s+/g,"-"))'
+	local new = 'encodeURIComponent(String(e).trim().toLowerCase().replace(/[^\\p{L}\\p{N}\\s_-]/gu,"").replace(/\\s/g,"-"))'
+	for _, f in ipairs(vim.fn.glob(path .. "/app/out/_next/static/*/pages/index.js", false, true)) do
+		local src = table.concat(vim.fn.readfile(f, "b"), "\n")
+		local patched, n = src:gsub(vim.pesc(old), new)
+		if n == 0 and not src:find(new, 1, true) then
+			vim.notify("markdown-preview: heading-link patch no longer applies", vim.log.levels.WARN)
+		end
+		vim.fn.writefile(vim.split(patched, "\n"), f, "b")
+	end
+end
+
+-- vim.pack has no `build` key: run build steps on install/update instead.
+vim.api.nvim_create_autocmd("PackChanged", {
+	callback = function(ev)
+		local d = ev.data
+		if d.spec.name == "markdown-preview.nvim" and d.kind ~= "delete" then
+			vim.system({ "npm", "install" }, { cwd = d.path .. "/app" }):wait()
+			mkdp_github_slugs(d.path)
+		end
+	end,
+})
 vim.pack.add({
 	"https://www.github.com/lewis6991/gitsigns.nvim",
+	"https://www.github.com/tpope/vim-fugitive",
 	"https://www.github.com/echasnovski/mini.nvim",
 	"https://www.github.com/nvim-lua/plenary.nvim",
 	"https://www.github.com/nvim-telescope/telescope.nvim",
@@ -431,6 +463,7 @@ vim.pack.add({
 	"https://www.github.com/folke/which-key.nvim",
 	"https://www.github.com/folke/todo-comments.nvim",
 	"https://www.github.com/folke/flash.nvim",
+	"https://github.com/stevearc/aerial.nvim",
 	{
 		src = "https://github.com/nvim-treesitter/nvim-treesitter",
 		branch = "main",
@@ -449,6 +482,8 @@ vim.pack.add({
 		version = vim.version.range("1.*"),
 	},
 	"https://github.com/L3MON4D3/LuaSnip",
+	"https://github.com/MeanderingProgrammer/render-markdown.nvim",
+	"https://github.com/iamcco/markdown-preview.nvim", -- :MarkdownPreview opens a live browser preview
 })
 
 local function packadd(name)
@@ -456,6 +491,7 @@ local function packadd(name)
 end
 packadd("nvim-treesitter")
 packadd("gitsigns.nvim")
+packadd("vim-fugitive")
 packadd("mini.nvim")
 packadd("plenary.nvim")
 packadd("telescope.nvim")
@@ -465,6 +501,9 @@ packadd("gruvbox.nvim")
 packadd("which-key.nvim")
 packadd("todo-comments.nvim")
 packadd("flash.nvim")
+packadd("aerial.nvim")
+packadd("render-markdown.nvim")
+packadd("markdown-preview.nvim")
 -- LSP
 packadd("nvim-lspconfig")
 packadd("mason.nvim")
@@ -511,6 +550,20 @@ vim.keymap.set({ "n", "x", "o" }, "<leader>J", function()
 	require("flash").treesitter()
 end, { desc = "Flash treesitter" })
 
+-- aerial: code outline sidebar. Symbols come from the LSP when one is
+-- attached, falling back to treesitter. `{`/`}` jump between symbols in any
+-- buffer aerial attaches to.
+require("aerial").setup({
+	on_attach = function(bufnr)
+		vim.keymap.set("n", "{", "<cmd>AerialPrev<CR>", { buffer = bufnr, desc = "Previous symbol" })
+		vim.keymap.set("n", "}", "<cmd>AerialNext<CR>", { buffer = bufnr, desc = "Next symbol" })
+	end,
+})
+vim.keymap.set("n", "<leader>a", "<cmd>AerialToggle!<CR>", { desc = "Toggle code outline" })
+
+-- render-markdown: renders markdown in-buffer (needs markdown + markdown_inline parsers).
+require("render-markdown").setup({})
+
 local setup_treesitter = function()
 	local treesitter = require("nvim-treesitter")
 	treesitter.setup({})
@@ -527,6 +580,9 @@ local setup_treesitter = function()
 		"json",
 		"lua",
 		"markdown",
+		"markdown_inline",
+		"latex",
+		"yaml",
 		"python",
 		"typescript",
 		"vue",
@@ -597,12 +653,16 @@ telescope.setup({
 	},
 })
 pcall(telescope.load_extension, "fzf")
+pcall(telescope.load_extension, "aerial")
 
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Telescope Find Files" })
 vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Telescope Live Grep" })
 vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope Buffers" })
 vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope Help Tags" })
+vim.keymap.set("n", "<leader>fo", function()
+	vim.cmd("Telescope aerial")
+end, { desc = "Telescope code outline symbols" })
 vim.keymap.set("n", "<leader>fC", function()
 	builtin.find_files({ cwd = vim.fn.expand("%:p:h") })
 end, { desc = "Find files in current file's directory" })
@@ -663,6 +723,10 @@ vim.keymap.set("n", "<leader>hd", function()
 	require("gitsigns").diffthis()
 end, { desc = "Diff this" })
 
+-- fugitive: no setup() — it's a vimscript plugin, ready once loaded.
+vim.keymap.set("n", "<leader>gs", "<cmd>Git<CR>", { desc = "Fugitive git status" })
+vim.keymap.set("n", "<leader>gv", "<cmd>Gvdiffsplit<CR>", { desc = "Fugitive diff file vs index" })
+
 -- ============================================================================
 -- LSP, Linting, Formatting & Completion
 -- ============================================================================
@@ -713,6 +777,12 @@ local function lsp_on_attach(ev)
 
 	local bufnr = ev.buf
 	local opts = { noremap = true, silent = true, buffer = bufnr }
+
+	vim.keymap.set("n", "gd", vim.lsp.buf.definition, {
+		buffer = bufnr,
+		silent = true,
+		desc = "Go to definition",
+	})
 
 	vim.keymap.set("n", "<leader>gd", function()
 		require("telescope.builtin").lsp_definitions({ jump_type = "never" })
@@ -836,6 +906,13 @@ vim.g.rustaceanvim = {
 				vim.keymap.set("n", lhs, rhs, { buffer = bufnr, silent = true, desc = desc })
 			end
 
+			-- Inferred types, chain types and parameter names, shown inline.
+			vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+			map("<leader>rh", function()
+				local enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr })
+				vim.lsp.inlay_hint.enable(not enabled, { bufnr = bufnr })
+			end, "Toggle inlay hints")
+
 			-- Navigation. Neovim ships no `gd` default: its LSP maps are
 			-- grn/gra/grr/gri/gO, and definition is reachable only via <C-]>
 			-- through tagfunc. rust-analyzer serves these, so plain
@@ -849,10 +926,10 @@ vim.g.rustaceanvim = {
 				-- Hover, plus actions on the hovered item.
 				vim.cmd.RustLsp({ "hover", "actions" })
 			end, "Hover actions")
-			map("<leader>a", function()
-				-- rust-analyzer's grouped code actions.
-				vim.cmd.RustLsp("codeAction")
-			end, "Code action (grouped)")
+			-- Code action is deliberately absent: the generic LspAttach handler already
+			-- binds it to <leader>ca, which fires for Rust too. It used to be bound to
+			-- <leader>a here, where being buffer-local shadowed the global AerialToggle
+			-- in every Rust buffer.
 			map("<leader>rr", function()
 				vim.cmd.RustLsp("runnables")
 			end, "Runnables")
@@ -877,8 +954,34 @@ vim.g.rustaceanvim = {
 				cargo = { allFeatures = true },
 				check = { command = "clippy" },
 				procMacro = { enable = true },
+				inlayHints = {
+					typeHints = { enable = true },
+					-- The type at each step of an iterator chain; the most useful of these.
+					chainingHints = { enable = true },
+					parameterHints = { enable = true },
+					closureReturnTypeHints = { enable = "always" },
+					lifetimeElisionHints = { enable = "skip_trivial", useParameterNames = true },
+					bindingModeHints = { enable = false },
+					maxLength = 25,
+				},
 			},
 		},
+		-- Per-project overrides. rustaceanvim's own default for this field only applies
+		-- clippy defaults and ignores project_root, and clippy is set explicitly above,
+		-- so nothing is lost by replacing it.
+		settings = function(project_root, default_settings)
+			local settings = vim.deepcopy(default_settings)
+
+			-- meteora-interface-rs does not build under --all-features: the `anchor` and
+			-- `fetch` features reference crates that are not declared dependencies, so
+			-- rust-analyzer reports ~100 errors that have nothing to do with the buffer.
+			-- `serde` is the feature set its `make lint` uses.
+			if project_root and project_root:find("meteora%-interface%-rs") then
+				settings["rust-analyzer"].cargo = { features = { "serde" } }
+			end
+
+			return settings
+		end,
 	},
 }
 
