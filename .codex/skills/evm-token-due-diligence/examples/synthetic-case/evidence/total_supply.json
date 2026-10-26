@@ -1,0 +1,23 @@
+{
+  "synthetic": true,
+  "endpoint": "[REDACTED]",
+  "endpoint_label": "offline synthetic provider",
+  "captured_at_utc": "2023-11-14T22:13:21Z",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": "total_supply",
+    "method": "eth_call",
+    "params": [
+      {
+        "to": "0x1234567890abcdef1234567890abcdef12345678",
+        "data": "0x18160ddd"
+      },
+      "0x1e240"
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": "total_supply",
+    "result": "0x00000000000000000000000000000000000000000000003635c9adc5dea00000"
+  }
+}

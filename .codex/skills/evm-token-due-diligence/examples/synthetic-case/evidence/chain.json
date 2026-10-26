@@ -1,0 +1,17 @@
+{
+  "synthetic": true,
+  "endpoint": "[REDACTED]",
+  "endpoint_label": "offline synthetic provider",
+  "captured_at_utc": "2023-11-14T22:13:21Z",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": "chain",
+    "method": "eth_chainId",
+    "params": []
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": "chain",
+    "result": "0x1"
+  }
+}

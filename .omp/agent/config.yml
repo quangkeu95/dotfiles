@@ -1,0 +1,11 @@
+setupVersion: 2
+modelRoles:
+  vision: openai-codex/gpt-6-astra
+  default: anthropic/claude-opus-5-5:high
+tools:
+  approvalMode: yolo
+theme:
+  dark: titanium
+hideThinkingBlock: true
+dev:
+  autoqaConsent: granted

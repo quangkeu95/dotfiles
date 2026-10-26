@@ -11,3 +11,5 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 brew bundle --file=Brewfile
 ./deploy.sh MANIFEST
+
+chmod 700 "$HOME/.ssh" "$HOME/.gnupg"

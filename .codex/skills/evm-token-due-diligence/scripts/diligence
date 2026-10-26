@@ -1,0 +1,11 @@
+#!/bin/sh
+set -eu
+skill_script_dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+skill_manifest="$skill_script_dir/rust/Cargo.toml"
+if [ "${1:-}" = "selftest" ]; then
+  shift
+  if [ "${1:-}" != "--emit-example" ]; then
+    exec cargo test --locked --offline --manifest-path "$skill_manifest" "$@"
+  fi
+fi
+exec cargo run --quiet --locked --offline --manifest-path "$skill_manifest" -- "$@"

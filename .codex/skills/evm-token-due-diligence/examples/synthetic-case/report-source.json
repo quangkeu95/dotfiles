@@ -1,0 +1,416 @@
+{
+  "target": {
+    "chain_id": 1,
+    "address": "0x1234567890abcdef1234567890abcdef12345678"
+  },
+  "metadata": {
+    "name": {
+      "status": "resolved",
+      "value": "Synthetic Fixture",
+      "evidence": [
+        "name"
+      ]
+    },
+    "symbol": {
+      "status": "resolved",
+      "value": "FIX",
+      "evidence": [
+        "symbol"
+      ]
+    },
+    "decimals": {
+      "status": "resolved",
+      "value": 18,
+      "evidence": [
+        "decimals"
+      ]
+    },
+    "total_supply": {
+      "status": "resolved",
+      "value": "1000000000000000000000",
+      "evidence": [
+        "total_supply"
+      ]
+    }
+  },
+  "mode": "broad",
+  "evidence_kind": "synthetic",
+  "current_pin": "pin-1",
+  "question": "Does the offline synthetic packet remain internally consistent?",
+  "verdict": "INCONCLUSIVE for any real token: this is only a synthetic validator fixture.",
+  "decision": "inconclusive",
+  "conditions": [
+    "This packet is never live evidence"
+  ],
+  "reasons": [
+    "All economic risk surfaces are deliberately unassessed"
+  ],
+  "contrary_evidence": [
+    "No contrary live evidence is available in this synthetic fixture"
+  ],
+  "unknowns": [
+    "Every real-token risk surface is outside this offline test"
+  ],
+  "evidence_to_change": [
+    "A separately authorized investigation with real pinned evidence"
+  ],
+  "recommendations": [
+    "Use this fixture only for package validation"
+  ],
+  "ratings": [
+    {
+      "surface": "token_controls",
+      "status": "not_assessed",
+      "severity": "unknown",
+      "likelihood": "unknown",
+      "confidence": "unknown",
+      "coverage": "not_assessed",
+      "time_basis": "Synthetic pin-1 only",
+      "finding_ids": [
+        "F01"
+      ]
+    },
+    {
+      "surface": "canonical_lp_custody",
+      "status": "not_assessed",
+      "severity": "unknown",
+      "likelihood": "unknown",
+      "confidence": "unknown",
+      "coverage": "not_assessed",
+      "time_basis": "Synthetic pin-1 only",
+      "finding_ids": [
+        "F02"
+      ]
+    },
+    {
+      "surface": "side_pool_removal",
+      "status": "not_assessed",
+      "severity": "unknown",
+      "likelihood": "unknown",
+      "confidence": "unknown",
+      "coverage": "not_assessed",
+      "time_basis": "Synthetic pin-1 only",
+      "finding_ids": [
+        "F03"
+      ]
+    },
+    {
+      "surface": "sellability_depth",
+      "status": "not_assessed",
+      "severity": "unknown",
+      "likelihood": "unknown",
+      "confidence": "unknown",
+      "coverage": "not_assessed",
+      "time_basis": "Synthetic pin-1 only",
+      "finding_ids": [
+        "F04"
+      ]
+    },
+    {
+      "surface": "current_concentration",
+      "status": "not_assessed",
+      "severity": "unknown",
+      "likelihood": "unknown",
+      "confidence": "unknown",
+      "coverage": "not_assessed",
+      "time_basis": "Synthetic pin-1 only",
+      "finding_ids": [
+        "F05"
+      ]
+    },
+    {
+      "surface": "launch_integrity",
+      "status": "not_assessed",
+      "severity": "unknown",
+      "likelihood": "unknown",
+      "confidence": "unknown",
+      "coverage": "not_assessed",
+      "time_basis": "Synthetic pin-1 only",
+      "finding_ids": [
+        "F06"
+      ]
+    },
+    {
+      "surface": "admin_treasury_reward_custody",
+      "status": "not_assessed",
+      "severity": "unknown",
+      "likelihood": "unknown",
+      "confidence": "unknown",
+      "coverage": "not_assessed",
+      "time_basis": "Synthetic pin-1 only",
+      "finding_ids": [
+        "F07"
+      ]
+    },
+    {
+      "surface": "reward_accounting_liveness",
+      "status": "not_assessed",
+      "severity": "unknown",
+      "likelihood": "unknown",
+      "confidence": "unknown",
+      "coverage": "not_assessed",
+      "time_basis": "Synthetic pin-1 only",
+      "finding_ids": [
+        "F08"
+      ]
+    },
+    {
+      "surface": "utility_redemption",
+      "status": "not_assessed",
+      "severity": "unknown",
+      "likelihood": "unknown",
+      "confidence": "unknown",
+      "coverage": "not_assessed",
+      "time_basis": "Synthetic pin-1 only",
+      "finding_ids": [
+        "F09"
+      ]
+    },
+    {
+      "surface": "external_dependencies",
+      "status": "not_assessed",
+      "severity": "unknown",
+      "likelihood": "unknown",
+      "confidence": "unknown",
+      "coverage": "not_assessed",
+      "time_basis": "Synthetic pin-1 only",
+      "finding_ids": [
+        "F10"
+      ]
+    },
+    {
+      "surface": "development_disclosure",
+      "status": "not_assessed",
+      "severity": "unknown",
+      "likelihood": "unknown",
+      "confidence": "unknown",
+      "coverage": "not_assessed",
+      "time_basis": "Synthetic pin-1 only",
+      "finding_ids": [
+        "F11"
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "id": "F01",
+      "proposition": "Synthetic coverage gap for token_controls",
+      "chain_id": 1,
+      "address": "0x1234567890abcdef1234567890abcdef12345678",
+      "pin_id": "pin-1",
+      "transaction": null,
+      "status": "not_assessed",
+      "reason": "Offline consistency fixture intentionally does not investigate a real system",
+      "evidence": [],
+      "evidence_type": "unknown",
+      "confidence": "unknown",
+      "severity": "unknown",
+      "alternatives": [
+        "No live conclusion can be drawn from this fixture"
+      ],
+      "coverage": "not_assessed",
+      "time_basis": "Synthetic pin-1 only",
+      "stale_when": "Never valid as live evidence"
+    },
+    {
+      "id": "F02",
+      "proposition": "Synthetic coverage gap for canonical_lp_custody",
+      "chain_id": 1,
+      "address": "0x1234567890abcdef1234567890abcdef12345678",
+      "pin_id": "pin-1",
+      "transaction": null,
+      "status": "not_assessed",
+      "reason": "Offline consistency fixture intentionally does not investigate a real system",
+      "evidence": [],
+      "evidence_type": "unknown",
+      "confidence": "unknown",
+      "severity": "unknown",
+      "alternatives": [
+        "No live conclusion can be drawn from this fixture"
+      ],
+      "coverage": "not_assessed",
+      "time_basis": "Synthetic pin-1 only",
+      "stale_when": "Never valid as live evidence"
+    },
+    {
+      "id": "F03",
+      "proposition": "Synthetic coverage gap for side_pool_removal",
+      "chain_id": 1,
+      "address": "0x1234567890abcdef1234567890abcdef12345678",
+      "pin_id": "pin-1",
+      "transaction": null,
+      "status": "not_assessed",
+      "reason": "Offline consistency fixture intentionally does not investigate a real system",
+      "evidence": [],
+      "evidence_type": "unknown",
+      "confidence": "unknown",
+      "severity": "unknown",
+      "alternatives": [
+        "No live conclusion can be drawn from this fixture"
+      ],
+      "coverage": "not_assessed",
+      "time_basis": "Synthetic pin-1 only",
+      "stale_when": "Never valid as live evidence"
+    },
+    {
+      "id": "F04",
+      "proposition": "Synthetic coverage gap for sellability_depth",
+      "chain_id": 1,
+      "address": "0x1234567890abcdef1234567890abcdef12345678",
+      "pin_id": "pin-1",
+      "transaction": null,
+      "status": "not_assessed",
+      "reason": "Offline consistency fixture intentionally does not investigate a real system",
+      "evidence": [],
+      "evidence_type": "unknown",
+      "confidence": "unknown",
+      "severity": "unknown",
+      "alternatives": [
+        "No live conclusion can be drawn from this fixture"
+      ],
+      "coverage": "not_assessed",
+      "time_basis": "Synthetic pin-1 only",
+      "stale_when": "Never valid as live evidence"
+    },
+    {
+      "id": "F05",
+      "proposition": "Synthetic coverage gap for current_concentration",
+      "chain_id": 1,
+      "address": "0x1234567890abcdef1234567890abcdef12345678",
+      "pin_id": "pin-1",
+      "transaction": null,
+      "status": "not_assessed",
+      "reason": "Offline consistency fixture intentionally does not investigate a real system",
+      "evidence": [],
+      "evidence_type": "unknown",
+      "confidence": "unknown",
+      "severity": "unknown",
+      "alternatives": [
+        "No live conclusion can be drawn from this fixture"
+      ],
+      "coverage": "not_assessed",
+      "time_basis": "Synthetic pin-1 only",
+      "stale_when": "Never valid as live evidence"
+    },
+    {
+      "id": "F06",
+      "proposition": "Synthetic coverage gap for launch_integrity",
+      "chain_id": 1,
+      "address": "0x1234567890abcdef1234567890abcdef12345678",
+      "pin_id": "pin-1",
+      "transaction": null,
+      "status": "not_assessed",
+      "reason": "Offline consistency fixture intentionally does not investigate a real system",
+      "evidence": [],
+      "evidence_type": "unknown",
+      "confidence": "unknown",
+      "severity": "unknown",
+      "alternatives": [
+        "No live conclusion can be drawn from this fixture"
+      ],
+      "coverage": "not_assessed",
+      "time_basis": "Synthetic pin-1 only",
+      "stale_when": "Never valid as live evidence"
+    },
+    {
+      "id": "F07",
+      "proposition": "Synthetic coverage gap for admin_treasury_reward_custody",
+      "chain_id": 1,
+      "address": "0x1234567890abcdef1234567890abcdef12345678",
+      "pin_id": "pin-1",
+      "transaction": null,
+      "status": "not_assessed",
+      "reason": "Offline consistency fixture intentionally does not investigate a real system",
+      "evidence": [],
+      "evidence_type": "unknown",
+      "confidence": "unknown",
+      "severity": "unknown",
+      "alternatives": [
+        "No live conclusion can be drawn from this fixture"
+      ],
+      "coverage": "not_assessed",
+      "time_basis": "Synthetic pin-1 only",
+      "stale_when": "Never valid as live evidence"
+    },
+    {
+      "id": "F08",
+      "proposition": "Synthetic coverage gap for reward_accounting_liveness",
+      "chain_id": 1,
+      "address": "0x1234567890abcdef1234567890abcdef12345678",
+      "pin_id": "pin-1",
+      "transaction": null,
+      "status": "not_assessed",
+      "reason": "Offline consistency fixture intentionally does not investigate a real system",
+      "evidence": [],
+      "evidence_type": "unknown",
+      "confidence": "unknown",
+      "severity": "unknown",
+      "alternatives": [
+        "No live conclusion can be drawn from this fixture"
+      ],
+      "coverage": "not_assessed",
+      "time_basis": "Synthetic pin-1 only",
+      "stale_when": "Never valid as live evidence"
+    },
+    {
+      "id": "F09",
+      "proposition": "Synthetic coverage gap for utility_redemption",
+      "chain_id": 1,
+      "address": "0x1234567890abcdef1234567890abcdef12345678",
+      "pin_id": "pin-1",
+      "transaction": null,
+      "status": "not_assessed",
+      "reason": "Offline consistency fixture intentionally does not investigate a real system",
+      "evidence": [],
+      "evidence_type": "unknown",
+      "confidence": "unknown",
+      "severity": "unknown",
+      "alternatives": [
+        "No live conclusion can be drawn from this fixture"
+      ],
+      "coverage": "not_assessed",
+      "time_basis": "Synthetic pin-1 only",
+      "stale_when": "Never valid as live evidence"
+    },
+    {
+      "id": "F10",
+      "proposition": "Synthetic coverage gap for external_dependencies",
+      "chain_id": 1,
+      "address": "0x1234567890abcdef1234567890abcdef12345678",
+      "pin_id": "pin-1",
+      "transaction": null,
+      "status": "not_assessed",
+      "reason": "Offline consistency fixture intentionally does not investigate a real system",
+      "evidence": [],
+      "evidence_type": "unknown",
+      "confidence": "unknown",
+      "severity": "unknown",
+      "alternatives": [
+        "No live conclusion can be drawn from this fixture"
+      ],
+      "coverage": "not_assessed",
+      "time_basis": "Synthetic pin-1 only",
+      "stale_when": "Never valid as live evidence"
+    },
+    {
+      "id": "F11",
+      "proposition": "Synthetic coverage gap for development_disclosure",
+      "chain_id": 1,
+      "address": "0x1234567890abcdef1234567890abcdef12345678",
+      "pin_id": "pin-1",
+      "transaction": null,
+      "status": "not_assessed",
+      "reason": "Offline consistency fixture intentionally does not investigate a real system",
+      "evidence": [],
+      "evidence_type": "unknown",
+      "confidence": "unknown",
+      "severity": "unknown",
+      "alternatives": [
+        "No live conclusion can be drawn from this fixture"
+      ],
+      "coverage": "not_assessed",
+      "time_basis": "Synthetic pin-1 only",
+      "stale_when": "Never valid as live evidence"
+    }
+  ]
+}

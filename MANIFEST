@@ -10,3 +10,10 @@ gitconfig|s|.gitconfig
 .config/zed/settings.json|s|
 .claude/CLAUDE.md|s|
 .claude/settings.json|s|
+.ssh/config|s|
+.gnupg/gpg-agent.conf|s|
+.config/gh/config.yml|s|
+.omp/agent/config.yml|s|
+.codex/AGENTS.md|s|
+.codex/rules/default.rules|s|
+.codex/skills/evm-token-due-diligence|s|

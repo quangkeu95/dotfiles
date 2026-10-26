@@ -1,0 +1,24 @@
+{
+  "synthetic": true,
+  "endpoint": "[REDACTED]",
+  "endpoint_label": "offline synthetic provider",
+  "captured_at_utc": "2023-11-14T22:13:21Z",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": "header",
+    "method": "eth_getBlockByNumber",
+    "params": [
+      "latest",
+      false
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": "header",
+    "result": {
+      "number": "0x1e240",
+      "hash": "0xa3a1e5e3e9588eb6e8e94d5fb758eb04c146db15e2d061bdb6b74f1f88069abd",
+      "timestamp": "0x6553f100"
+    }
+  }
+}

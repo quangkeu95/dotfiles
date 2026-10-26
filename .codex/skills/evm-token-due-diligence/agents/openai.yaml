@@ -1,0 +1,4 @@
+interface:
+  display_name: "EVM Token Due Diligence"
+  short_description: "Pinned token, liquidity, and economic-system diligence"
+  default_prompt: "Use $evm-token-due-diligence to investigate the exact EVM chain and token address I provide, answering my decision question with pinned evidence and explicit coverage limits."

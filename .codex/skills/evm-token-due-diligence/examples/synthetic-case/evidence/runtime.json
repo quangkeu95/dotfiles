@@ -1,0 +1,20 @@
+{
+  "synthetic": true,
+  "endpoint": "[REDACTED]",
+  "endpoint_label": "offline synthetic provider",
+  "captured_at_utc": "2023-11-14T22:13:21Z",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": "runtime",
+    "method": "eth_getCode",
+    "params": [
+      "0x1234567890abcdef1234567890abcdef12345678",
+      "0x1e240"
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": "runtime",
+    "result": "0x6001600055"
+  }
+}

@@ -1,0 +1,235 @@
+{
+  "schema_version": 1,
+  "evidence_kind": "synthetic",
+  "mode": "broad",
+  "target": {
+    "requested": {
+      "chain_id": 1,
+      "address": "0x1234567890abcdef1234567890abcdef12345678"
+    },
+    "observed": {
+      "chain_id": 1,
+      "address": "0x1234567890abcdef1234567890abcdef12345678"
+    },
+    "queried": {
+      "chain_id": 1,
+      "address": "0x1234567890abcdef1234567890abcdef12345678",
+      "code_artifact": "runtime"
+    }
+  },
+  "question": "Does the offline synthetic packet remain internally consistent?",
+  "metadata": {
+    "name": {
+      "status": "resolved",
+      "value": "Synthetic Fixture",
+      "evidence": [
+        "name"
+      ]
+    },
+    "symbol": {
+      "status": "resolved",
+      "value": "FIX",
+      "evidence": [
+        "symbol"
+      ]
+    },
+    "decimals": {
+      "status": "resolved",
+      "value": 18,
+      "evidence": [
+        "decimals"
+      ]
+    },
+    "total_supply": {
+      "status": "resolved",
+      "value": "1000000000000000000000",
+      "evidence": [
+        "total_supply"
+      ]
+    }
+  },
+  "current_pin": "pin-1",
+  "materiality_rules": "Offline fixture; no monetary threshold applies to authority discovery",
+  "limitations": [
+    "Synthetic, not an actual RPC or chain observation"
+  ],
+  "pins": [
+    {
+      "id": "pin-1",
+      "chain_id": 1,
+      "number": 123456,
+      "hash": "0xa3a1e5e3e9588eb6e8e94d5fb758eb04c146db15e2d061bdb6b74f1f88069abd",
+      "timestamp_utc": "2023-11-14T22:13:20Z",
+      "time_basis": "current",
+      "header_artifact": "header",
+      "header_recheck_artifact": "recheck",
+      "chain_id_artifact": "chain"
+    }
+  ],
+  "artifacts": [
+    {
+      "id": "chain",
+      "path": "evidence/chain.json",
+      "sha256": "59903b5e2313eec44c26f4d9d8240e37492d0f5efa8d72b88fae6f4c4a6972fe",
+      "kind": "rpc",
+      "chain_id": 1,
+      "address": "0x1234567890abcdef1234567890abcdef12345678",
+      "pin_id": "pin-1",
+      "target_binding": {
+        "chain_id": 1,
+        "address": "0x1234567890abcdef1234567890abcdef12345678"
+      },
+      "provenance": "Generated synthetic self-test fixture; not live evidence"
+    },
+    {
+      "id": "header",
+      "path": "evidence/header.json",
+      "sha256": "39e61c522ec9750379e14e9d8f42eed959b03bfd9dc0c2c110e8f7708733f7a3",
+      "kind": "rpc",
+      "chain_id": 1,
+      "address": "0x1234567890abcdef1234567890abcdef12345678",
+      "pin_id": "pin-1",
+      "target_binding": {
+        "chain_id": 1,
+        "address": "0x1234567890abcdef1234567890abcdef12345678"
+      },
+      "provenance": "Generated synthetic self-test fixture; not live evidence"
+    },
+    {
+      "id": "recheck",
+      "path": "evidence/recheck.json",
+      "sha256": "6ebe7b22550bc4fcb0aa615a0b72b14392a0bbae9c9e8527459487dedb8b2f6a",
+      "kind": "rpc",
+      "chain_id": 1,
+      "address": "0x1234567890abcdef1234567890abcdef12345678",
+      "pin_id": "pin-1",
+      "target_binding": {
+        "chain_id": 1,
+        "address": "0x1234567890abcdef1234567890abcdef12345678"
+      },
+      "provenance": "Generated synthetic self-test fixture; not live evidence"
+    },
+    {
+      "id": "runtime",
+      "path": "evidence/runtime.json",
+      "sha256": "898f42e919a021abbbe61fb584e678b26f9635e859579d8749aad9ee06c27a93",
+      "kind": "rpc",
+      "chain_id": 1,
+      "address": "0x1234567890abcdef1234567890abcdef12345678",
+      "pin_id": "pin-1",
+      "target_binding": {
+        "chain_id": 1,
+        "address": "0x1234567890abcdef1234567890abcdef12345678"
+      },
+      "provenance": "Generated synthetic self-test fixture; not live evidence"
+    },
+    {
+      "id": "name",
+      "path": "evidence/name.json",
+      "sha256": "5301f1fe1acc0a09251123a47e497f8e3a927605c653818adcfe5f14f6a5f2d1",
+      "kind": "rpc",
+      "chain_id": 1,
+      "address": "0x1234567890abcdef1234567890abcdef12345678",
+      "pin_id": "pin-1",
+      "target_binding": {
+        "chain_id": 1,
+        "address": "0x1234567890abcdef1234567890abcdef12345678"
+      },
+      "provenance": "Generated synthetic self-test fixture; not live evidence"
+    },
+    {
+      "id": "symbol",
+      "path": "evidence/symbol.json",
+      "sha256": "68a7433ddbb802b1cbab7dc5f292098f53aaff2ac2aa6ce2ccc20330f7418714",
+      "kind": "rpc",
+      "chain_id": 1,
+      "address": "0x1234567890abcdef1234567890abcdef12345678",
+      "pin_id": "pin-1",
+      "target_binding": {
+        "chain_id": 1,
+        "address": "0x1234567890abcdef1234567890abcdef12345678"
+      },
+      "provenance": "Generated synthetic self-test fixture; not live evidence"
+    },
+    {
+      "id": "decimals",
+      "path": "evidence/decimals.json",
+      "sha256": "d437de4c3a387d832eadba0498e60975e71377a809086bceee0b43346a0d9c70",
+      "kind": "rpc",
+      "chain_id": 1,
+      "address": "0x1234567890abcdef1234567890abcdef12345678",
+      "pin_id": "pin-1",
+      "target_binding": {
+        "chain_id": 1,
+        "address": "0x1234567890abcdef1234567890abcdef12345678"
+      },
+      "provenance": "Generated synthetic self-test fixture; not live evidence"
+    },
+    {
+      "id": "total_supply",
+      "path": "evidence/total_supply.json",
+      "sha256": "8ec8e7838bff2f80aafa0ec437d7e1a954b9dceb7620c26d8714df5bbfe9e9ff",
+      "kind": "rpc",
+      "chain_id": 1,
+      "address": "0x1234567890abcdef1234567890abcdef12345678",
+      "pin_id": "pin-1",
+      "target_binding": {
+        "chain_id": 1,
+        "address": "0x1234567890abcdef1234567890abcdef12345678"
+      },
+      "provenance": "Generated synthetic self-test fixture; not live evidence"
+    }
+  ],
+  "scope": [
+    {
+      "chain_id": 1,
+      "address": "0x1234567890abcdef1234567890abcdef12345678",
+      "role": "synthetic target",
+      "material": true,
+      "pin_id": "pin-1",
+      "provenance": [
+        "runtime"
+      ],
+      "runtime": {
+        "status": "code",
+        "artifact": "runtime",
+        "sha256": "8880a54d03747df9eda6b310443a788558dc080c804db3fde94aee0382f66ea9"
+      },
+      "proxy": {
+        "status": "unresolved",
+        "basis": "Intentionally not examined in offline fixture",
+        "evidence": [],
+        "related_scope": []
+      }
+    }
+  ],
+  "safety": {
+    "no_real_private_keys": true,
+    "no_real_signing": true,
+    "no_broadcast": true,
+    "external_content_untrusted": true,
+    "simulation_used": false,
+    "forks": []
+  },
+  "discovery": [
+    {
+      "chain_id": 1,
+      "address": "0x1234567890abcdef1234567890abcdef12345678",
+      "pin_id": "pin-1",
+      "claim": "No discovery performed in this fixture",
+      "search_universe": "No live sources; offline fixture only",
+      "from_block": 0,
+      "to_block": 123456,
+      "pagination": "No queries attempted",
+      "inclusion_rules": "Synthetic target only",
+      "exclusions": "All live systems",
+      "materiality": "No live monetary threshold",
+      "coverage": "not_assessed",
+      "evidence": []
+    }
+  ],
+  "report_source": {
+    "path": "report-source.json",
+    "sha256": "3c55235df04610d4aa5bdf7c9141ff4f9fd51b88f3df2714a56acc31d5e9b05c"
+  }
+}
