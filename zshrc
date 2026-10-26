@@ -98,3 +98,9 @@ export PATH="$HOME/.local/bin:$PATH"
 
 # Ctrl+G: open/attach tmux session "main"
 bindkey -s "^G" "tmux new -A -s main\n"
+
+export NVM_DIR="$HOME/.nvm"
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+export PATH="/Users/quangkeu95/.terragrunt/bin:$PATH"
+export PATH="/Users/quangkeu95/.local/share/solana/install/active_release/bin:$PATH"

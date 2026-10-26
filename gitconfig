@@ -1,0 +1,14 @@
+# This is Git's per-user configuration file.
+[user]
+	name = quangkeu95
+	email = quangkeu95@gmail.com
+	signingkey = B46E8E9A454ACBD3FD80062C2908049E20DFB7FC
+# Please adapt and uncomment the following lines:
+#	name = quangkeu95
+#	email = quangkeu95@Quangs-MacBook-Pro.local
+[gpg]
+	program = /opt/homebrew/bin/gpg
+[commit]
+	gpgsign = true
+[tag]
+	gpgsign = true
